@@ -1,0 +1,49 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TagList from '~/components/TagList.astro';
+import MediaImage from '~/components/MediaImage.astro';
+import MediaGallery from '~/components/MediaGallery.astro';
+import Prose from '~/components/Prose.astro';
+import { withBase } from '~/lib/url';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, role, tools, year, cover, coverAlt, media, summary } = project.data;
+---
+
+<BaseLayout title={title} description={summary} image={cover}>
+  <article class="section">
+    <div class="container-content">
+      <a
+        href={`${withBase('/')}#projects`}
+        class="mb-8 inline-flex items-center gap-2 font-mono text-xs text-fg-muted no-underline hover:text-accent-400"
+      >
+        <span aria-hidden="true">←</span> back to projects
+      </a>
+
+      <header class="mb-10 flex flex-col gap-4">
+        <p class="heading-eyebrow">case study</p>
+        <h1 class="text-3xl font-semibold leading-tight tracking-tight md:text-5xl">{title}</h1>
+        <p class="max-w-3xl text-lg text-fg-muted">{summary}</p>
+        <TagList role={role} year={year} tools={tools} class="mt-2" />
+      </header>
+
+      <MediaImage src={cover} alt={coverAlt} eager class="mb-12" />
+
+      <Prose class="mb-12">
+        <slot />
+      </Prose>
+
+      {media && media.length > 0 && (
+        <section aria-label="Additional media" class="mt-8">
+          <h2 class="heading-eyebrow mb-4">media</h2>
+          <MediaGallery items={media} />
+        </section>
+      )}
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { withBase } from '~/lib/url';
+---
+
+<BaseLayout title="Not found" description="Page not found">
+  <section class="section">
+    <div class="container-content">
+      <p class="heading-eyebrow">404</p>
+      <h1 class="mt-2 text-4xl font-semibold md:text-5xl">Page not found</h1>
+      <p class="mt-4 text-fg-muted">That route doesn't exist.</p>
+      <p class="mt-6">
+        <a href={withBase('/')} class="font-mono text-sm">← back home</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

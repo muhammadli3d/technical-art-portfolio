@@ -1,0 +1,73 @@
+---
+import { withBase } from '~/lib/url';
+
+interface Props {
+  src: string;
+  provider?: 'local' | 'youtube' | 'vimeo';
+  poster?: string;
+  alt: string;
+  caption?: string;
+  class?: string;
+}
+
+const { src, provider = 'local', poster, alt, caption, class: className = '' } = Astro.props;
+
+function youtubeId(url: string): string | null {
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+  return m ? m[1] : null;
+}
+function vimeoId(url: string): string | null {
+  const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  return m ? m[1] : null;
+}
+
+const embedSrc =
+  provider === 'youtube'
+    ? (() => {
+        const id = youtubeId(src);
+        return id ? `https://www.youtube-nocookie.com/embed/${id}` : src;
+      })()
+    : provider === 'vimeo'
+      ? (() => {
+          const id = vimeoId(src);
+          return id ? `https://player.vimeo.com/video/${id}` : src;
+        })()
+      : null;
+
+const localSrc = provider === 'local' ? withBase(src) : null;
+const posterSrc = poster ? withBase(poster) : undefined;
+---
+
+<figure class:list={['overflow-hidden rounded-xl border border-border-base bg-bg-elevated', className]}>
+  {provider === 'local' && localSrc && (
+    <video
+      class="block h-auto w-full"
+      src={localSrc}
+      poster={posterSrc}
+      controls
+      muted
+      playsinline
+      preload="metadata"
+      aria-label={alt}
+    >
+      <track kind="captions" />
+    </video>
+  )}
+  {(provider === 'youtube' || provider === 'vimeo') && embedSrc && (
+    <div class="relative aspect-video">
+      <iframe
+        class="absolute inset-0 h-full w-full"
+        src={embedSrc}
+        title={alt}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+  )}
+  {caption && (
+    <figcaption class="border-t border-border-base px-4 py-2 font-mono text-xs text-fg-subtle">
+      {caption}
+    </figcaption>
+  )}
+</figure>

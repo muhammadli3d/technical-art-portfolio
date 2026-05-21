@@ -1,0 +1,40 @@
+---
+title: 'Stylized Shader Study'
+role: 'Shader Author'
+tools: ['HLSL', 'Unreal Engine', 'Substance Designer']
+year: 2025
+cover: '/media/projects/shader-study/cover.svg'
+coverAlt: 'Stylized blue shader with rim light and gradient'
+summary: 'A study in stylized lighting — fresnel, rim, matcap, and a hand-painted noise pass for cohesion across props.'
+order: 1
+media:
+  - type: image
+    src: '/media/projects/shader-study/shot-1.svg'
+    alt: 'Three test spheres showing fresnel, rim, and matcap passes'
+    caption: 'Pass breakdown: fresnel · rim · matcap'
+  - type: image
+    src: '/media/projects/shader-study/shot-2.svg'
+    alt: 'Noise composition curve graph'
+    caption: 'Noise composition curve'
+---
+
+## Goal
+
+Build a stylized lighting model that reads well on any silhouette, runs cheaply
+on mobile, and gives art direction a single set of dials per asset.
+
+## Approach
+
+- Half-Lambert wrap term, biased toward warm tones in lit areas.
+- Fresnel + view-aligned rim, gated by a curvature mask so it doesn't fire on flat panels.
+- Single 256² matcap supplies highlight character — swapped per material family.
+- Hand-painted detail noise modulated by world-space scale for cohesion.
+
+## Result
+
+Three test props share one master material with seven parameters. The fragment
+cost stays under the project budget on a mid-tier mobile target.
+
+## Notes
+
+This is placeholder copy — swap with your real breakdown when you're ready.

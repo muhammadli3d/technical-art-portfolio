@@ -1,0 +1,18 @@
+---
+interface Props {
+  role?: string;
+  year?: number;
+  tools?: readonly string[];
+  class?: string;
+}
+
+const { role, year, tools = [], class: className = '' } = Astro.props;
+---
+
+<ul class:list={['flex flex-wrap items-center gap-2', className]}>
+  {role && <li class="chip">{role}</li>}
+  {year && <li class="chip">{year}</li>}
+  {tools.map((tool) => (
+    <li class="chip">{tool}</li>
+  ))}
+</ul>

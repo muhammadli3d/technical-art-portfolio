@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '~/components/ProjectCard.astro';
+import { withBase } from '~/lib/url';
+
+const all = await getCollection('projects', ({ data }) => !data.draft);
+const projects = all.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="projects" class="section">
+  <div class="container-content">
+    <header class="mb-10 flex items-end justify-between gap-4">
+      <div>
+        <p class="heading-eyebrow">selected work</p>
+        <h2 class="mt-2 text-3xl font-semibold md:text-4xl">Projects</h2>
+      </div>
+      <p class="hidden font-mono text-xs text-fg-subtle md:block">
+        {projects.length.toString().padStart(2, '0')} entries
+      </p>
+    </header>
+
+    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((p, i) => (
+        <li class="h-full">
+          <ProjectCard
+            href={withBase(`/projects/${p.slug}`)}
+            title={p.data.title}
+            summary={p.data.summary}
+            cover={p.data.cover}
+            coverAlt={p.data.coverAlt}
+            role={p.data.role}
+            year={p.data.year}
+            tools={p.data.tools}
+            eager={i < 3}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
