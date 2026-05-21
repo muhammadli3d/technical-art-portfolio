@@ -1,0 +1,36 @@
+---
+title: 'Real-time VFX Breakdown'
+role: 'VFX / Technical Artist'
+tools: ['Niagara', 'HLSL', 'Houdini']
+year: 2024
+cover: '/media/projects/vfx-breakdown/cover.svg'
+coverAlt: 'Stylized blue energy burst with embers'
+summary: 'A burst effect taken apart: emission, simulation, and render passes — with budget notes for each layer.'
+order: 3
+media:
+  - type: image
+    src: '/media/projects/vfx-breakdown/shot-1.svg'
+    alt: 'Three-panel breakdown of emit, sim, and render stages'
+    caption: 'Stages: emit → sim → render'
+---
+
+## Goal
+
+A signature ability VFX that telegraphs cleanly at a distance, holds up in
+close-up, and stays inside a tight per-frame draw-call and overdraw budget.
+
+## Approach
+
+- **Emit:** Spawn from a curl-noise warped sphere for organic distribution.
+- **Sim:** Velocity field driven by a flipbook of pre-baked Houdini vectors.
+- **Render:** Soft additive sprites + a single mesh emitter for the core form.
+- Overdraw kept in check by clipping low-alpha regions and capping particle count by distance.
+
+## Result
+
+Comfortably hits target frame budget on the mid-tier GPU, with a parameter
+pack exposed for designers to retune per ability.
+
+## Notes
+
+Placeholder copy — swap in your real breakdown later.

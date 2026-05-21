@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <rect width="1600" height="1000" fill="#0a0a0a"/>
+  <g stroke="#3b82f6" stroke-width="0.5" fill="none" opacity="0.5">
+    <!-- wireframe grid -->
+    <g>
+      <path d="M100 200 L1500 200"/>
+      <path d="M100 400 L1500 400"/>
+      <path d="M100 600 L1500 600"/>
+      <path d="M100 800 L1500 800"/>
+      <path d="M200 100 L200 900"/>
+      <path d="M500 100 L500 900"/>
+      <path d="M800 100 L800 900"/>
+      <path d="M1100 100 L1100 900"/>
+      <path d="M1400 100 L1400 900"/>
+    </g>
+  </g>
+  <g fill="#60a5fa">
+    <circle cx="200" cy="200" r="3"/>
+    <circle cx="500" cy="400" r="3"/>
+    <circle cx="800" cy="600" r="3"/>
+    <circle cx="1100" cy="400" r="3"/>
+    <circle cx="1400" cy="200" r="3"/>
+  </g>
+  <text x="80" y="940" fill="#9ca3af" font-family="monospace" font-size="24">heightfield → mesh</text>
+</svg>

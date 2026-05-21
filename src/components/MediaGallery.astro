@@ -1,0 +1,32 @@
+---
+import MediaImage from './MediaImage.astro';
+import MediaVideo from './MediaVideo.astro';
+
+type MediaItem =
+  | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'video'; src: string; provider?: 'local' | 'youtube' | 'vimeo'; poster?: string; alt: string; caption?: string };
+
+interface Props {
+  items: MediaItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    {items.map((item) => (
+      item.type === 'image' ? (
+        <MediaImage src={item.src} alt={item.alt} caption={item.caption} />
+      ) : (
+        <MediaVideo
+          src={item.src}
+          provider={item.provider ?? 'local'}
+          poster={item.poster}
+          alt={item.alt}
+          caption={item.caption}
+        />
+      )
+    ))}
+  </div>
+)}

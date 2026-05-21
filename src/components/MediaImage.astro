@@ -1,0 +1,29 @@
+---
+import { withBase } from '~/lib/url';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  eager?: boolean;
+  class?: string;
+}
+
+const { src, alt, caption, eager = false, class: className = '' } = Astro.props;
+const href = withBase(src);
+---
+
+<figure class:list={['overflow-hidden rounded-xl border border-border-base bg-bg-elevated', className]}>
+  <img
+    src={href}
+    alt={alt}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    class="block h-auto w-full"
+  />
+  {caption && (
+    <figcaption class="border-t border-border-base px-4 py-2 font-mono text-xs text-fg-subtle">
+      {caption}
+    </figcaption>
+  )}
+</figure>

@@ -1,0 +1,40 @@
+---
+import { site } from '~/lib/site';
+---
+
+<section id="contact" class="section border-t border-border-base/60">
+  <div class="container-content grid gap-10 md:grid-cols-[1fr_2fr]">
+    <div>
+      <p class="heading-eyebrow">contact</p>
+      <h2 class="mt-2 text-3xl font-semibold md:text-4xl">Get in touch</h2>
+    </div>
+    <div class="space-y-6">
+      <p class="text-lg text-fg-muted">
+        Open to interesting technical art roles, contracts, and collaborations.
+      </p>
+      <p>
+        <a
+          href={`mailto:${site.email}`}
+          class="inline-flex items-center gap-2 font-mono text-base text-accent-400 hover:text-accent-500"
+        >
+          <span aria-hidden="true">→</span>
+          {site.email}
+        </a>
+      </p>
+      <ul class="flex flex-wrap gap-3">
+        {site.socials.map((s) => (
+          <li>
+            <a
+              href={s.href}
+              class="chip !text-fg-base hover:!border-accent-500 hover:!text-accent-400 no-underline"
+              rel="me noopener"
+              target="_blank"
+            >
+              {s.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

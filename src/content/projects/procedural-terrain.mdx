@@ -1,0 +1,36 @@
+---
+title: 'Procedural Terrain Toolkit'
+role: 'Technical Artist'
+tools: ['Houdini', 'Python', 'Unreal Engine']
+year: 2025
+cover: '/media/projects/procedural-terrain/cover.svg'
+coverAlt: 'Layered procedural terrain silhouette with low mountains'
+summary: 'A Houdini Digital Asset for art-directable terrain — erosion, scatter, and biome masks exported straight to Unreal landscapes.'
+order: 2
+media:
+  - type: image
+    src: '/media/projects/procedural-terrain/shot-1.svg'
+    alt: 'Wireframe view of heightfield-to-mesh conversion'
+    caption: 'Heightfield → mesh export'
+---
+
+## Goal
+
+Cut iteration time from "request → terrain" to under a minute, while keeping
+artist control over silhouette, biome distribution, and erosion direction.
+
+## Approach
+
+- Houdini Digital Asset wraps the full graph behind seven exposed parameters.
+- Hydraulic + thermal erosion, with a paintable mask for art direction.
+- Biome layers built from slope, altitude, and a low-frequency control texture.
+- Python exporter writes heightmap, weight maps, and a scatter manifest in one click.
+
+## Result
+
+A scene that previously took half a day now lands in Unreal in roughly five
+minutes, with clean handoff for environment artists to paint over.
+
+## Notes
+
+Placeholder copy — replace with real results and metrics.

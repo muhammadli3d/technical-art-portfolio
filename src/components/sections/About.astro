@@ -1,0 +1,36 @@
+---
+const skills = [
+  'HLSL / GLSL',
+  'Unreal Engine',
+  'Unity',
+  'Houdini',
+  'Substance',
+  'Python',
+  'C++',
+  'Blender',
+];
+---
+
+<section id="about" class="section border-t border-border-base/60">
+  <div class="container-content grid gap-12 md:grid-cols-[1fr_2fr]">
+    <div>
+      <p class="heading-eyebrow">about</p>
+      <h2 class="mt-2 text-3xl font-semibold md:text-4xl">Who I am</h2>
+    </div>
+    <div class="space-y-4 text-lg text-fg-muted">
+      <p>
+        I'm a technical artist focused on the seam between art and engineering —
+        shaders, procedural content, VFX, and the tools that let teams ship them.
+      </p>
+      <p>
+        I like problems that need both a shader graph and a profiler open at the
+        same time: getting the look right, then getting it cheap.
+      </p>
+      <ul class="flex flex-wrap gap-2 pt-2">
+        {skills.map((s) => (
+          <li class="chip">{s}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

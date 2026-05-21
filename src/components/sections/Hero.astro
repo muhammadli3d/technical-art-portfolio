@@ -1,0 +1,30 @@
+---
+import { site } from '~/lib/site';
+---
+
+<section class="section relative overflow-hidden">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 opacity-60"
+    style="background: radial-gradient(60% 50% at 20% 10%, rgba(59,130,246,0.18), transparent 60%), radial-gradient(40% 40% at 80% 0%, rgba(96,165,250,0.10), transparent 70%);"
+  ></div>
+  <div class="container-content flex flex-col gap-6">
+    <p class="heading-eyebrow">{site.role}</p>
+    <h1 class="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+      {site.name}<span class="text-accent-500">.</span>
+    </h1>
+    <p class="max-w-2xl text-lg text-fg-muted md:text-xl">
+      {site.tagline}
+    </p>
+    <div class="mt-2 flex flex-wrap gap-3 font-mono text-xs text-fg-subtle">
+      <span class="chip">Shaders</span>
+      <span class="chip">Procedural</span>
+      <span class="chip">VFX</span>
+      <span class="chip">Pipeline</span>
+    </div>
+    <div class="mt-6 flex items-center gap-2 font-mono text-xs text-fg-subtle">
+      <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-accent-500"></span>
+      scroll for selected work
+    </div>
+  </div>
+</section>
