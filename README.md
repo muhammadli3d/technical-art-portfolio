@@ -1,4 +1,4 @@
-# technical-art-portfolio
+# tech
 
 Dark, blue-accented portfolio for technical art work. Built with
 [Astro](https://astro.build/) + TypeScript + MDX + Tailwind CSS, deployed
